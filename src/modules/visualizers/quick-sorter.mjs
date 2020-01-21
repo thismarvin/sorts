@@ -3,7 +3,6 @@ import {
 } from "./visualizer.mjs";
 
 import {
-    GraphEntry,
     Histogram
 } from "../graphing.mjs";
 
@@ -26,28 +25,14 @@ class QuickSorter extends Visualizer {
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
             "color": "#FF0000",
-            "border": 2,
-            "padding": 5
         });
+        this.addGraph("indexMarker", this.indexMarker, 1);
+
         this.pivotMarker = new Histogram([]);
         this.pivotMarker.addStyling({
             "color": "#0000FF",
-            "border": 2,
-            "padding": 5
         });
-
-        this.grapher.attach(
-            new GraphEntry(
-                "indexMarker",
-                this.indexMarker
-            )
-        );
-        this.grapher.attach(
-            new GraphEntry(
-                "indexMarker",
-                this.pivotMarker
-            )
-        );
+        this.addGraph("pivotMarker", this.pivotMarker, 1);
     }
 
     step() {
@@ -64,52 +49,43 @@ class QuickSorter extends Visualizer {
             }
         }
 
-        // If a process hasn't started then the sort if complete.
-        if (!this.processingSection) {
-            //console.log("Done");
-            return;
+        if (this.processingSection) {
+            if (this.array[this.index] > this.array[this.pivot]) {
+                super.swap(this.index, this.pivot - 1);
+                super.swap(this.pivot - 1, this.pivot);
+
+                this.pivot--;
+            } else {
+                this.index++;
+            }
+
+            if (this.index > this.pivot) {
+                this.pivotStack.push({
+                    "high": this.pivot - 1,
+                    "low": this.pivotInformation.low
+                });
+                this.pivotStack.push({
+                    "high": this.pivotInformation.high,
+                    "low": this.pivot + 1
+                });
+
+                this.processingSection = false;
+            }
         }
-
-        if (this.array[this.index] > this.array[this.pivot]) {
-            super.swap(this.index, this.pivot - 1);
-            super.swap(this.pivot - 1, this.pivot);
-
-            this.pivot--;
-        } else {
-            this.index++;
-        }
-
-        if (this.index > this.pivot) {
-            this.pivotStack.push({
-                "high": this.pivot - 1,
-                "low": this.pivotInformation.low
-            });
-            this.pivotStack.push({
-                "high": this.pivotInformation.high,
-                "low": this.pivot + 1
-            });
-
-            this.processingSection = false;
-        }
-
-        setTimeout(() => {
-            this.step()
-        }, this.stepFrequency);
-
-        // A checky method to highlight the current index of the sort.
-        let temp = [];
-
-        temp = new Array(this.array.length).fill(0);
-        temp[this.index] = this.array[this.index];
-        this.indexMarker.setData(temp);
-        this.indexMarker.setRange(this.histogram.min, this.histogram.max);
-
-        temp = new Array(this.array.length).fill(0);
-        temp[this.pivot] = this.array[this.pivot];
-        this.pivotMarker.setData(temp);
-        this.pivotMarker.setRange(this.histogram.min, this.histogram.max);
 
         super.step();
+    }
+
+    sortComplete() {
+        // If we are not currently processing section and the pivotStack is empty then the sort is complete.
+        return !this.processingSection && this.pivotStack.length === 0;
+    }
+
+    updateGraph() {
+        this.updateBasicMarker(this.indexMarker, this.index);
+        this.updateBasicMarker(this.pivotMarker, this.pivot);
+
+        super.updateGraph();
     }
 }
 

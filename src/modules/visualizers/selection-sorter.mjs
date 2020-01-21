@@ -3,7 +3,6 @@ import {
 } from "./visualizer.mjs";
 
 import {
-    GraphEntry,
     Histogram
 } from "../graphing.mjs";
 
@@ -18,35 +17,23 @@ class SelectionSorter extends Visualizer {
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
             "color": "#FF0000",
-            "border": 2,
-            "padding": 5
         });
+        this.addGraph("indexMarker", this.indexMarker, 1);
+
+        this.beforeSearchMarker = new Histogram([]);
+        this.beforeSearchMarker.addStyling({
+            "color": "#FFFF00",
+        });
+        this.addGraph("beforeSearchMarker", this.beforeSearchMarker, 2);
+
         this.minimumMarker = new Histogram([]);
         this.minimumMarker.addStyling({
             "color": "#0000FF",
-            "border": 2,
-            "padding": 5
         });
-
-        this.grapher.attach(
-            new GraphEntry(
-                "indexMarker",
-                this.indexMarker
-            )
-        );
-        this.grapher.attach(
-            new GraphEntry(
-                "indexMarker",
-                this.minimumMarker
-            )
-        );
+        this.addGraph("minimumMarker", this.minimumMarker, 1);
     }
 
     step() {
-        if (this.index >= this.array.length) {
-            return;
-        }
-
         if (!this.searching) {
             this.searching = true;
             this.indexBeforeSearch = this.index;
@@ -63,33 +50,26 @@ class SelectionSorter extends Visualizer {
 
             this.index = this.indexBeforeSearch;
 
-            super.swap(this.minimumIndex, this.index);
+            this.swap(this.minimumIndex, this.index);
 
             this.index++;
             this.minimumIndex = this.index;
         }
 
-        // The array is not sorted yet, so queue up the next step.
-        setTimeout(() => {
-            this.step()
-        }, this.stepFrequency);
-
-        // A checky method to highlight the current index of the sort.
-        let temp = [];
-
-        temp = new Array(this.array.length).fill(0);
-        temp[this.index] = this.array[this.index];
-        this.indexMarker.setData(temp);
-        this.indexMarker.setRange(this.histogram.min, this.histogram.max);
-
-        temp = new Array(this.array.length).fill(0);
-        temp[this.minimumIndex] = this.array[this.minimumIndex];
-        this.minimumMarker.setData(temp);
-        this.minimumMarker.setRange(this.histogram.min, this.histogram.max);
-
-        this.grapher.applyChanges();
-
         super.step();
+    }
+
+    sortComplete() {
+        // Once the index reaches the end of the array then sorting is complete.
+        return this.index >= this.array.length;
+    }
+
+    updateGraph() {
+        this.updateBasicMarker(this.indexMarker, this.index);
+        this.updateBasicMarker(this.beforeSearchMarker, this.indexBeforeSearch);
+        this.updateBasicMarker(this.minimumMarker, this.minimumIndex);
+
+        super.updateGraph();
     }
 }
 
