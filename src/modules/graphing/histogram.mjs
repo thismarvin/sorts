@@ -1,6 +1,8 @@
-import Graph from "../graphing/graph.mjs"
+import {
+    Graph
+} from "../graphing/graph.mjs"
 
-export default class Histogram extends Graph {
+class Histogram extends Graph {
     constructor(data) {
         super(data);
     }
@@ -100,3 +102,7 @@ export default class Histogram extends Graph {
         }
     }
 }
+
+export {
+    Histogram
+};

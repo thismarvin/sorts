@@ -1,4 +1,4 @@
-export default class GraphHelper {
+class GraphHelper {
     static findRange(graph) {
         let min = graph.data[0];
         let max = min;
@@ -24,3 +24,7 @@ export default class GraphHelper {
         }
     }
 }
+
+export {
+    GraphHelper
+};

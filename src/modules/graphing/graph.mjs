@@ -1,6 +1,8 @@
-import GraphHelper from "../graphing/graph-helper.mjs"
+import {
+    GraphHelper
+} from "../graphing/graph-helper.mjs"
 
-export default class Graph {
+class Graph {
     constructor(data) {
         this.data = [];
         this.min = 0;
@@ -45,3 +47,7 @@ export default class Graph {
         console.log("ummmm");
     }
 }
+
+export {
+    Graph
+};

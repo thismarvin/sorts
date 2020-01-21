@@ -1,4 +1,4 @@
-export default class Grapher {
+class Grapher {
     constructor(id) {
         this.id = id;
         this.entries = [];
@@ -68,3 +68,7 @@ export default class Grapher {
         const myp5 = new p5(sketch, this.id);
     }
 }
+
+export {
+    Grapher
+};
