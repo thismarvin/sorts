@@ -56,6 +56,17 @@ class Visualizer {
     }
 
     /**
+     * Swaps two indexes of the visualizer's array.
+     * @param {number} a the first index to swap
+     * @param {number} b the second index to swap
+     */
+    swap(a, b) {
+        const copy = this.array[a];
+        this.array[a] = this.array[b];
+        this.array[b] = copy;
+    }
+
+    /**
      * Create an array filled with random integers.
      * @access private
      * @param {number} length the length of the array
