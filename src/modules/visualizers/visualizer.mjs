@@ -19,7 +19,7 @@ class Visualizer {
         this.steps = 0;
         this.stepFrequency = 50;
 
-        this.array = this.createRandomArray(50);
+        this.array = this.createRandomArray(50, 1, 100);
         this.index = 0;
 
         this.grapher = new Grapher(this.id);
@@ -47,6 +47,7 @@ class Visualizer {
 
     step() {
         this.updateGraph();
+        this.steps++;
     }
 
     updateGraph() {
