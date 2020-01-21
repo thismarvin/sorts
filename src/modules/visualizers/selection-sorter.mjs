@@ -1,6 +1,6 @@
 import {
     Visualizer
-} from "../visualizers/visualizer.mjs";
+} from "./visualizer.mjs";
 
 import {
     GraphEntry,
@@ -63,9 +63,7 @@ class SelectionSorter extends Visualizer {
 
             this.index = this.indexBeforeSearch;
 
-            const copy = this.array[this.minimumIndex];
-            this.array[this.minimumIndex] = this.array[this.index];
-            this.array[this.index] = copy;
+            super.swap(this.minimumIndex, this.index);
 
             this.index++;
             this.minimumIndex = this.index;

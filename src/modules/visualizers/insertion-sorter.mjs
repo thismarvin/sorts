@@ -1,6 +1,6 @@
 import {
     Visualizer
-} from "../visualizers/visualizer.mjs"
+} from "./visualizer.mjs"
 
 import {
     GraphEntry,
@@ -35,10 +35,7 @@ class InsertionSorter extends Visualizer {
         }
 
         if (this.array[this.index] < this.array[this.index - 1]) {
-            // Swap
-            const copy = this.array[this.index - 1];
-            this.array[this.index - 1] = this.array[this.index];
-            this.array[this.index] = copy;
+            super.swap(this.index - 1, this.index);
 
             if (!this.backtracking) {
                 this.backtracking = true;
