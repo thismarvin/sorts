@@ -1,5 +1,6 @@
 import {
-    InsertionSorter
+    InsertionSorter,
+    SelectionSorter
 } from "./modules/visualizers.mjs"
 
 const visualizer = new InsertionSorter("visualizer");
