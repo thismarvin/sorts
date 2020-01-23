@@ -19,23 +19,20 @@ class Visualizer {
         this.steps = 0;
         this.stepFrequency = 50;
 
-        this.array = this.createRandomArray(50);
+        this.array = this.createRandomArray(50, 1, 100);
         this.index = 0;
 
         this.grapher = new Grapher(this.id);
-        this.histogram = new Histogram(this.array);
-        this.histogram.addStyling({
-            "color": "#000000",
-            "border": 2,
-            "padding": 5
+
+        this.defaultBorder = 2;
+        this.defaultPadding = 5;
+
+        this.defaultGraph = new Histogram(this.array);
+        this.defaultGraph.addStyling({
+            "color": "#FFFFFF"
         });
 
-        this.grapher.attach(
-            new GraphEntry(
-                "default",
-                this.histogram
-            )
-        );
+        this.addGraph("default", this.defaultGraph);
     }
 
     /**
@@ -45,13 +42,63 @@ class Visualizer {
         this.step();
     }
 
+    addGraph(name, graph, zIndex = 0) {
+        graph.addStyling({
+            "border": this.defaultBorder,
+            "padding": this.defaultPadding
+        });
+
+        this.grapher.attach(
+            new GraphEntry(
+                name,
+                graph,
+                zIndex
+            )
+        );
+    }
+
+    updateBasicMarker(marker, index) {
+        const temp = new Array(this.array.length).fill(0);
+        temp[index] = this.array[index];
+
+        marker.setData(temp);
+        marker.setRange(this.defaultGraph.min, this.defaultGraph.max);
+    }
+
     step() {
+        this.steps++;
+
         this.updateGraph();
+
+        if (!this.sortComplete()) {
+            this.queueNextStep();
+        }
+    }
+
+    sortComplete() {
+        return false;
     }
 
     updateGraph() {
         this.grapher.getEntry("default").graph.setData(this.array);
         this.grapher.applyChanges();
+    }
+
+    queueNextStep() {
+        setTimeout(() => {
+            this.step()
+        }, this.stepFrequency);
+    }
+
+    /**
+     * Swaps two indexes of the visualizer's array.
+     * @param {number} a the first index to swap
+     * @param {number} b the second index to swap
+     */
+    swap(a, b) {
+        const copy = this.array[a];
+        this.array[a] = this.array[b];
+        this.array[b] = copy;
     }
 
     /**
