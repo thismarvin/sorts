@@ -4,8 +4,9 @@ import {
     QuickSorter,
     BubbleSorter,
     MergeSorter,
-    BogoSorter
+    BogoSorter,
+    CocktailSorter,
 } from "./modules/visualizers.mjs"
 
-const visualizer = new BogoSorter("visualizer");
+const visualizer = new CocktailSorter("visualizer");
 visualizer.begin();
