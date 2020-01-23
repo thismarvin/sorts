@@ -16,7 +16,7 @@ for (let sortType of sortTypes) {
     div = document.createElement("div");
     rootDiv.appendChild(div);
     div.insertAdjacentHTML(
-        "afterend",
+        "afterbegin",
         `<div class="visualization">
             <h2>${sortType} sort</h2>
             <div class="visualizer" id="${sortType}"></div>
