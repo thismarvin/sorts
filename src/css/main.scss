@@ -19,7 +19,8 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin: 0;
     padding: 0;
 }
@@ -30,9 +31,29 @@ h1, h2 {
     margin: 0 auto;
 }
 
-#title {
-    margin: 1.5em 0;
+#info {
+    padding-top: 11em;
+    padding-bottom: 6em;
     text-align: center;
+
+    h1 {
+        margin-bottom: 1em;
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.4em;
+        margin: 0;
+        margin-bottom: 3em;
+    }
+
+    a {
+        padding: 1em;
+        background: white;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
 }
 
 .visualization {
@@ -52,6 +73,7 @@ h1, h2 {
         margin: 0;
         padding: 0.5em;
         font-size: 1.1em;
+        font-weight: bold;
     }
 }
 
