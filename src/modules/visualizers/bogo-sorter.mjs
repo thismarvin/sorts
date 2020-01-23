@@ -9,6 +9,13 @@ class BogoSorter extends Visualizer {
         this.array = this.createRandomArray(10, 1, 5);
     }
 
+    restartSort() {
+        this.steps = 0;
+        this.array = this.createRandomArray(10, 1, 5);
+        this.index = 0;
+        this.step();
+    }
+
     step() {
         if (!this.isSorted()) {
             this.shuffle();

@@ -27,6 +27,14 @@ class InsertionSorter extends Visualizer {
         this.addGraph("beforeBacktrackMarker", this.beforeBacktrackMarker, 1);
     }
 
+    restartSort() {
+        super.restartSort();
+
+        this.index = 1;
+        this.backtracking = false;
+        this.indexBeforeBacktrack = this.index;
+    }
+
     step() {
         if (this.array[this.index] < this.array[this.index - 1]) {
             super.swap(this.index - 1, this.index);

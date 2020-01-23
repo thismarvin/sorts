@@ -42,6 +42,14 @@ class Visualizer {
         this.step();
     }
 
+    restartSort() {
+        this.steps = 0;
+        this.array = this.createRandomArray(50, 1, 100);
+        this.index = 0;
+
+        this.queueNextStep();
+    }
+
     addGraph(name, graph, zIndex = 0) {
         graph.addStyling({
             "border": this.defaultBorder,

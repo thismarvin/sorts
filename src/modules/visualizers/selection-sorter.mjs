@@ -33,6 +33,14 @@ class SelectionSorter extends Visualizer {
         this.addGraph("minimumMarker", this.minimumMarker, 1);
     }
 
+    restartSort() {
+        super.restartSort();
+
+        this.searching = false;
+        this.indexBeforeSearch = this.index;
+        this.minimumIndex = this.index;
+    }
+
     step() {
         if (!this.searching) {
             this.searching = true;
