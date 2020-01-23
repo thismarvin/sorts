@@ -1,3 +1,8 @@
+:root {
+  --side-margin: 1em;
+  --visualizer-border: 1px;
+}
+
 html,
 body {
   height: 100%;
@@ -9,23 +14,41 @@ body {
   background-color: black;
 }
 
-.container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-  height: 100%;
+* {
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
 
-#visualizer {
-  width: 500px;
-  height: 400px;
-  border: 1px solid white;
+h1, h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: calc(100% - var(--side-margin) * 2);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#title {
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+.visualization {
+  margin-bottom: 3.5em;
+}
+
+.visualization h2 {
+  margin-bottom: 0.5em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.visualizer {
+  width: calc(100% - var(--visualizer-border) * 2);
+  max-width: calc(500px - var(--visualizer-border) * 2);
+  height: 300px;
+  border: var(--visualizer-border) solid white;
 }
 /*# sourceMappingURL=main.css.map */
