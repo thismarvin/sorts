@@ -24,7 +24,7 @@ class Visualizer {
 
         this.grapher = new Grapher(this.id);
 
-        this.defaultBorder = 2;
+        this.defaultBorder = 1;
         this.defaultPadding = 5;
 
         this.defaultGraph = new Histogram(this.array);
