@@ -26,6 +26,19 @@ class CocktailSorter extends Visualizer {
         this.addGraph("indexMarker", this.indexMarker, 1);
     }
 
+    restartSort() {
+        super.restartSort();
+
+        this.index = 1;
+
+        this.movingRight = true;
+        this.redundant = 0;
+
+        this.rightSwap = false;
+        this.leftSwap = false;
+        this.complete = false;
+    }
+
     step() {
         if (this.movingRight) {
             if (this.array[this.index] < this.array[this.index - 1]) {

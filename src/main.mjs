@@ -12,28 +12,55 @@ const sortTypes = ["insertion", "selection", "quick", "merge", "bubble", "cockta
 const rootDiv = document.getElementById("root");
 
 let div;
-for (let sortType of sortTypes){
+for (let sortType of sortTypes) {
     div = document.createElement("div");
-    rootDiv.appendChild(div);  
+    rootDiv.appendChild(div);
     div.insertAdjacentHTML(
         "afterend",
         `<div class="visualization">
             <h2>${sortType} sort</h2>
             <div class="visualizer" id="${sortType}"></div>
+            <button id="btn-restart-${sortType}">Restart Sort</button>
         </div>`
     );
 }
 
-const visualizers = [
-    new InsertionSorter("insertion"),
-    new SelectionSorter("selection"),
-    new QuickSorter("quick"),
-    new BubbleSorter("bubble"),
-    new MergeSorter("merge"),
-    new BogoSorter("bogo"),
-    new CocktailSorter("cocktail"),
+const visualizers = [{
+        "name": "insertion",
+        "visualizer": new InsertionSorter("insertion")
+    },
+    {
+        "name": "selection",
+        "visualizer": new SelectionSorter("selection")
+    },
+    {
+        "name": "quick",
+        "visualizer": new QuickSorter("quick")
+    },
+    {
+        "name": "merge",
+        "visualizer": new MergeSorter("merge")
+    },
+    {
+        "name": "bubble",
+        "visualizer": new BubbleSorter("bubble")
+    },
+    {
+        "name": "cocktail",
+        "visualizer": new CocktailSorter("cocktail")
+    },
+    {
+        "name": "bogo",
+        "visualizer": new BogoSorter("bogo")
+    },
 ];
 
+let button;
 for (let v of visualizers) {
-    v.begin();
+    v.visualizer.begin();
+
+    button = document.getElementById(`btn-restart-${v.name}`);
+    button.addEventListener("click", () => {
+        v.visualizer.restartSort();
+    });
 }

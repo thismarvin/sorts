@@ -1,6 +1,6 @@
 :root {
     --side-margin: 1em;
-    --visualizer-border: 1px;
+    --visualizer-border: 2px;
 }
 
 html,
@@ -43,12 +43,22 @@ h1, h2 {
         text-align: center;
         text-transform: capitalize;
     }
+
+    button {
+        width: 100%;
+        background-color: black;
+        border: 2px solid white;
+        border-radius: 1em;
+        margin: 0;
+        padding: 0.5em;
+        font-size: 1.1em;
+    }
 }
 
 .visualizer {
     width: calc(100% - var(--visualizer-border) * 2);
     max-width: calc(500px - var(--visualizer-border) * 2);
     height: 300px;
-
+    margin-bottom: 1em;
     border: var(--visualizer-border) solid white;
 }

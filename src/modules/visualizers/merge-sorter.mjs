@@ -43,6 +43,23 @@ class MergeSorter extends Visualizer {
 
     }
 
+    restartSort() {
+        super.restartSort();
+
+        this.groupSize = 1;
+        this.coverage = 0;
+
+        this.aIndex = 0;
+        this.bIndex = 0;
+        this.aRange = 0;
+        this.bRange = 0;
+        this.aIterations = 0;
+        this.bIterations = 0;
+
+        this.subsectionStartIndex = 0;
+        this.sortedSubsection = [];
+    }
+
     step() {
         if (this.aIndex === 0 && this.bIndex === 0) {
             this.aIndex = this.coverage;

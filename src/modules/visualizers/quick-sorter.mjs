@@ -35,6 +35,22 @@ class QuickSorter extends Visualizer {
         this.addGraph("pivotMarker", this.pivotMarker, 1);
     }
 
+    restartSort() {
+        super.restartSort();
+
+        this.pivot = 0;
+        this.index = 0;
+
+        this.processingSection = false;
+        this.pivotStack = [];
+        this.pivotInformation = null;
+
+        this.pivotStack.push({
+            "high": this.array.length - 1,
+            "low": 0
+        });
+    }
+
     step() {
         // If processing hasn't started and the pivotStack still has entries
         // then attempt to start processing a new section.

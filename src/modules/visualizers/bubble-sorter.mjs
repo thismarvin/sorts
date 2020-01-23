@@ -20,14 +20,21 @@ class BubbleSorter extends Visualizer {
         this.addGraph("indexMarker", this.indexMarker, 1);
     }
 
+    restartSort() {
+        super.restartSort();
+
+        this.index = 1;
+        this.completed = 0;
+    }
+
     step() {
-        if (this.array[this.index] <  this.array[this.index - 1]){
+        if (this.array[this.index] < this.array[this.index - 1]) {
             this.swap(this.index, this.index - 1);
         }
-        
+
         this.index++;
 
-        if (this.index >= this.array.length - this.completed){
+        if (this.index >= this.array.length - this.completed) {
             this.completed++;
             this.index = 1;
         }
