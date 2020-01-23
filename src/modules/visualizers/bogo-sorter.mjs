@@ -1,6 +1,6 @@
 import {
     Visualizer
-} from "./visualizer.mjs"
+} from "./visualizer.mjs";
 
 class BogoSorter extends Visualizer {
     constructor(id) {
