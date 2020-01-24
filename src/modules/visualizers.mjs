@@ -5,3 +5,4 @@ export { BubbleSorter } from "./visualizers/bubble-sorter.mjs";
 export { MergeSorter } from "./visualizers/merge-sorter.mjs";
 export { BogoSorter } from "./visualizers/bogo-sorter.mjs";
 export { CocktailSorter } from "./visualizers/cocktail-sorter.mjs";
+export { CombSorter } from "./visualizers/comb-sorter.mjs";

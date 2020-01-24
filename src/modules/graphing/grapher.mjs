@@ -58,7 +58,7 @@ class Grapher {
             };
 
             p5.windowResized = function () {
-                myCanvas = p5.resizeCanvas(0, 0);
+                //myCanvas = p5.resizeCanvas(0, 0);
                 setTimeout(() => {
                     instance.updateGraph = true;
                 }, 100);
