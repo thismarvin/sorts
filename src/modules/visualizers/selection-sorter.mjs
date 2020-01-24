@@ -16,19 +16,19 @@ class SelectionSorter extends Visualizer {
 
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
-            "color": "#FF0000",
+            "color": "#FF004D",
         });
         this.addGraph("indexMarker", this.indexMarker, 1);
 
         this.beforeSearchMarker = new Histogram([]);
         this.beforeSearchMarker.addStyling({
-            "color": "#FFFF00",
+            "color": "#FFA300",
         });
         this.addGraph("beforeSearchMarker", this.beforeSearchMarker, 2);
 
         this.minimumMarker = new Histogram([]);
         this.minimumMarker.addStyling({
-            "color": "#0000FF",
+            "color": "#D800CC",
         });
         this.addGraph("minimumMarker", this.minimumMarker, 1);
     }

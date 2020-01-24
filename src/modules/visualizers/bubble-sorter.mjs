@@ -15,7 +15,7 @@ class BubbleSorter extends Visualizer {
 
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
-            "color": "#FF0000"
+            "color": "#FF004D"
         });
         this.addGraph("indexMarker", this.indexMarker, 1);
     }

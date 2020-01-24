@@ -25,19 +25,19 @@ class MergeSorter extends Visualizer {
 
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
-            "color": "#FF0000"
+            "color": "#FF004D"
         });
         this.addGraph("indexMarker", this.indexMarker, 1);
 
         this.aIndexMarker = new Histogram([]);
         this.aIndexMarker.addStyling({
-            "color": "#00FF00"
+            "color": "#FFA300"
         });
         this.addGraph("aIndexMarker", this.aIndexMarker, 1);
 
         this.bIndexMarker = new Histogram([]);
         this.bIndexMarker.addStyling({
-            "color": "#0000FF"
+            "color": "#D800CC"
         });
         this.addGraph("bIndexMarker", this.bIndexMarker, 1);
 
