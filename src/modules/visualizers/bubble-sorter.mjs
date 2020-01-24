@@ -11,7 +11,9 @@ class BubbleSorter extends Visualizer {
         super(id);
 
         this.index = 1;
-        this.completed = 0;
+        this.elementsInPlace = 0;
+        this.swapped = false;
+        this.complete = false;
 
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
@@ -24,26 +26,31 @@ class BubbleSorter extends Visualizer {
         super.restartSort();
 
         this.index = 1;
-        this.completed = 0;
+        this.elementsInPlace = 0;
+        this.swapped = false;
+        this.complete = false;
     }
 
     step() {
         if (this.array[this.index] < this.array[this.index - 1]) {
             this.swap(this.index, this.index - 1);
+            this.swapped = true;
         }
 
         this.index++;
 
-        if (this.index >= this.array.length - this.completed) {
-            this.completed++;
+        if (this.index >= this.array.length - this.elementsInPlace) {
             this.index = 1;
+            this.elementsInPlace++;
+            this.complete = !this.swapped;
+            this.swapped = false;
         }
 
         super.step();
     }
 
     sortComplete() {
-        return this.completed >= this.array.length - 1;
+        return this.complete;
     }
 
     updateGraph() {
