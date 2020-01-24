@@ -6,9 +6,10 @@ import {
     MergeSorter,
     BogoSorter,
     CocktailSorter,
+    CombSorter,
 } from "./modules/visualizers.mjs"
 
-const sortTypes = ["insertion", "selection", "quick", "merge", "bubble", "cocktail", "bogo"];
+const sortTypes = ["insertion", "selection", "quick", "merge", "bubble", "cocktail", "comb", "bogo"];
 const rootDiv = document.getElementById("root");
 
 let div;
@@ -61,6 +62,10 @@ const visualizers = [{
     {
         "name": "cocktail",
         "visualizer": new CocktailSorter("cocktail")
+    },
+    {
+        "name": "comb",
+        "visualizer": new CombSorter("comb")
     },
     {
         "name": "bogo",
