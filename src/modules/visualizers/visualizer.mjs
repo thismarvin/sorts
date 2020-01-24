@@ -77,7 +77,7 @@ class Visualizer {
 
     step() {
         this.steps++;
-        this.stepParagraph.innerHTML = this.steps;
+        this.stepParagraph.innerHTML = `Total Steps: ${this.steps}`;
 
         this.updateGraph();
 

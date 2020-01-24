@@ -17,14 +17,13 @@ for (let sortType of sortTypes) {
     rootDiv.appendChild(div);
     div.insertAdjacentHTML(
         "afterbegin",
-        `<div class="visualization">
-            <h2>${sortType} sort</h2>
+        `<div class="visualization">           
             <div class="visualizer" id="${sortType}"></div>
-            <button id="btn-restart-${sortType}">Restart Sort</button>
+            <h2>${sortType} sort</h2>      
             <div id="steps">
-                <h3>Steps</h3>
                 <p id="steps-${sortType}">0</p>
             </div>
+            <button id="btn-restart-${sortType}">Restart Sort</button>
         </div>`
     );
 }
