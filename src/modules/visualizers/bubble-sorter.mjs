@@ -47,7 +47,7 @@ class BubbleSorter extends Visualizer {
     }
 
     updateGraph() {
-        this.updateBasicMarker(this.indexMarker, this.index);
+        this.updateBasicMarker(this.indexMarker, this.index - 1);
 
         super.updateGraph();
     }
