@@ -3,6 +3,14 @@
     --visualizer-border: 2px;
 }
 
+$desktop-width: 1000px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+        @content;
+    }
+}
+
 html,
 body {
     height: 100%;
@@ -30,6 +38,10 @@ h3 {
     width: calc(100% - var(--side-margin) * 2);
     max-width: 500px;
     margin: 0 auto;
+
+    @include desktop {
+        max-width: 1200px;
+    }
 }
 
 #info {
@@ -42,9 +54,10 @@ h3 {
     }
 
     p {
+        max-width: 500px;
+        margin: 0 auto;
         font-size: 1.2em;
         line-height: 1.4em;
-        margin: 0;
         margin-bottom: 3em;
     }
 
@@ -54,6 +67,21 @@ h3 {
         color: black;
         text-decoration: none;
         font-weight: bold;
+    }
+}
+
+#visualization-pair {
+    @include desktop {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+#visualization-entry {
+    @include desktop {
+        margin: 1em;
     }
 }
 
@@ -89,6 +117,12 @@ h3 {
     #steps {
         margin-bottom: 1.5em;
         display: inline-flex;
+    }
+
+    @include desktop {
+        width: 35vw;
+        max-width: 500px;
+        margin-bottom: 0;
     }
 }
 

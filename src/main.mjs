@@ -12,9 +12,19 @@ const sortTypes = ["insertion", "selection", "quick", "merge", "bubble", "cockta
 const rootDiv = document.getElementById("root");
 
 let div;
+let groupDiv;
+let index = 0;
 for (let sortType of sortTypes) {
+    if (index % 2 === 0) {
+        groupDiv = document.createElement("div");
+        groupDiv.id = "visualization-pair";
+        rootDiv.appendChild(groupDiv);
+    }
+    index++;
+
     div = document.createElement("div");
-    rootDiv.appendChild(div);
+    div.id = "visualization-entry";
+    groupDiv.appendChild(div);
     div.insertAdjacentHTML(
         "afterbegin",
         `<div class="visualization">           
