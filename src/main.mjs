@@ -21,6 +21,10 @@ for (let sortType of sortTypes) {
             <h2>${sortType} sort</h2>
             <div class="visualizer" id="${sortType}"></div>
             <button id="btn-restart-${sortType}">Restart Sort</button>
+            <div id="steps">
+                <h3>Steps</h3>
+                <p id="steps-${sortType}">0</p>
+            </div>
         </div>`
     );
 }

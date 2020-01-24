@@ -20,7 +20,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     margin: 0;
     padding: 0;
 }
@@ -58,11 +59,17 @@ h2 {
 
 .visualization {
     margin-bottom: 3.5em;
+    text-align: center;
 
-    h2 {
+    h2,
+    h3 {
         margin-bottom: 0.5em;
-        text-align: center;
         text-transform: capitalize;
+    }
+
+    p {
+        margin: 0;
+        color: #A8A8A8;
     }
 
     button {
@@ -74,6 +81,12 @@ h2 {
         padding: 0.5em;
         font-size: 1.1em;
         font-weight: bold;
+        margin-bottom: 1em;
+    }
+
+    #steps {
+        border: 2px solid white;
+        padding: 0.5em;
     }
 }
 
