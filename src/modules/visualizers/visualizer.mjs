@@ -33,6 +33,8 @@ class Visualizer {
         });
 
         this.addGraph("default", this.defaultGraph);
+
+        this.stepParagraph = document.getElementById(`steps-${this.id}`);
     }
 
     /**
@@ -75,6 +77,7 @@ class Visualizer {
 
     step() {
         this.steps++;
+        this.stepParagraph.innerHTML = `Total Steps: ${this.steps}`;
 
         this.updateGraph();
 

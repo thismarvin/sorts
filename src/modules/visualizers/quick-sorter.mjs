@@ -24,13 +24,13 @@ class QuickSorter extends Visualizer {
 
         this.indexMarker = new Histogram([]);
         this.indexMarker.addStyling({
-            "color": "#FF0000",
+            "color": "#FF004D",
         });
         this.addGraph("indexMarker", this.indexMarker, 1);
 
         this.pivotMarker = new Histogram([]);
         this.pivotMarker.addStyling({
-            "color": "#0000FF",
+            "color": "#FFA300",
         });
         this.addGraph("pivotMarker", this.pivotMarker, 1);
     }

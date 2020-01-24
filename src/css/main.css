@@ -20,7 +20,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   margin: 0;
   padding: 0;
 }
@@ -57,24 +58,39 @@ h2 {
 }
 
 .visualization {
-  margin-bottom: 3.5em;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: #1C1C1C;
+  margin-bottom: 1em;
+  text-align: center;
 }
 
 .visualization h2 {
   margin-bottom: 0.5em;
-  text-align: center;
   text-transform: capitalize;
+}
+
+.visualization p {
+  margin: 0;
+  color: #A8A8A8;
 }
 
 .visualization button {
   width: 100%;
-  background-color: black;
-  border: 2px solid white;
+  background-color: #393939;
+  border: transparent;
   border-radius: 1em;
   margin: 0;
   padding: 0.5em;
   font-size: 1.1em;
   font-weight: bold;
+}
+
+.visualization #steps {
+  margin-bottom: 1.5em;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .visualizer {
@@ -83,5 +99,16 @@ h2 {
   height: 300px;
   margin-bottom: 1em;
   border: var(--visualizer-border) solid white;
+  border-radius: 0.5em;
+}
+
+footer {
+  padding-top: 4em;
+  padding-bottom: 5em;
+  text-align: center;
+}
+
+footer a {
+  font-weight: bold;
 }
 /*# sourceMappingURL=main.css.map */
