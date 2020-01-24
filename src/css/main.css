@@ -84,4 +84,14 @@ h2 {
   margin-bottom: 1em;
   border: var(--visualizer-border) solid white;
 }
+
+footer {
+  padding-top: 1em;
+  padding-bottom: 5em;
+  text-align: center;
+}
+
+footer a {
+  font-weight: bold;
+}
 /*# sourceMappingURL=main.css.map */
